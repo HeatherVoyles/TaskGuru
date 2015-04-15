@@ -1,4 +1,4 @@
-'user strict'; 
+'use strict'; 
 
 app.controller('AuthController', function($scope, $location, Auth) { 
 
@@ -33,7 +33,7 @@ app.controller('AuthController', function($scope, $location, Auth) {
 			$scope.user.newPass = ''; 
 
 			console.log("Password changed successfully!"); 
-		}, functio(err) { 
+		}, function(err) { 
 			console.log("Error..."); 
 		});
 	}; 

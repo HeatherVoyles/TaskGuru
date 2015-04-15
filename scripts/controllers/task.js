@@ -3,7 +3,7 @@
 app.controller('TaskController', function($scope, FURL, $firebase, $location, $routeParams) { 
 
 	var ref = new Firebase(FURL); 
-	var fbTasks = $firebase(ref.child('tasks')).&asArray(); 
+	var fbTasks = $firebase(ref.child('tasks')).$asArray(); 
 	var taskId = $routeParams.taskId; 
 
 	console.log("Length = " + fbTasks.length); 
