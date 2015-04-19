@@ -1,4 +1,4 @@
-'use strict'; 
+'user strict'; 
 
 app.controller('AuthController', function($scope, $location, Auth) { 
 
@@ -7,7 +7,7 @@ app.controller('AuthController', function($scope, $location, Auth) {
 			console.log("Register successfully!"); 
 			$location.path('/'); 
 		}, function(err) { 
-			console.log("Error..."); 
+			console.log("Registration error..."); 
 		}); 
 	}; 
 
