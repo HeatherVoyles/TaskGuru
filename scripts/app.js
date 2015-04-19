@@ -1,4 +1,3 @@
-
 'use strict';
 
 var app = angular
@@ -6,7 +5,8 @@ var app = angular
     'ngAnimate',
     'ngResource',    
     'ngRoute',    
-    'firebase'
+    'firebase',
+    'toaster'
   ])
   .constant('FURL', 'https://task-guru.firebaseio.com/')  
   .config(function ($routeProvider) {

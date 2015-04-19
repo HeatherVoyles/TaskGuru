@@ -1,13 +1,19 @@
 'user strict'; 
 
-app.controller('AuthController', function($scope, $location, Auth) { 
+app.controller('AuthController', function($scope, $location, Auth, toaster) { 
+
+	if(Auth.signedIn()) { 
+		$location.path('/');
+	}
 
 	$scope.register = function(user) { 
 		Auth.register(user).then(function() { 
-			console.log("Register successfully!"); 
+			toaster.pop('success', 'Sweet. Registered successfully');
+			//console.log("Register successfully!"); 
 			$location.path('/'); 
 		}, function(err) { 
-			console.log("Registration error..."); 
+			toaster.pop('error', 'Rats, something went wrong!');
+			//console.log("Registration error..."); 
 		}); 
 	}; 
 
@@ -15,10 +21,12 @@ app.controller('AuthController', function($scope, $location, Auth) {
 
 		Auth.login(user)
 		.then(function() { 
-			console.log("Logged in successfully!"); 
+			toaster.pop('success', 'Sweet. Login successfully');
+			//console.log("Logged in successfully!"); 
 			$location.path('/'); 
 		}, function(err) {
-			console.log("Error..."); 
+			toaster.pop('error', 'Rats, something went wrong');
+			//console.log("Error..."); 
 		}); 
 	}; 
 
@@ -32,9 +40,10 @@ app.controller('AuthController', function($scope, $location, Auth) {
 			$scope.user.oldPass = ''; 
 			$scope.user.newPass = ''; 
 
-			console.log("Password changed successfully!"); 
+			toaster.pop('success', 'Sweet. Password changed successfully');
+			//console.log("Password changed successfully!"); 
 		}, function(err) { 
-			console.log("Error..."); 
+			toaster.pop('error', 'Rats, something went wrong');
 		});
 	}; 
 
