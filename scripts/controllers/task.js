@@ -6,11 +6,11 @@ app.controller('TaskController', function($scope, FURL, $firebase, $location, $r
 	var fbTasks = $firebase(ref.child('tasks')).$asArray(); 
 	var taskId = $routeParams.taskId; 
 
-	console.log("Length = " + fbTasks.length); 
-	fbTasks.$loaded().then(function(data) { 
-	console.log("Step 1: "+ data.length);
-	});
-	console.log("Step 2: " + fbTasks.length);
+	//console.log("Length = " + fbTasks.length); 
+	//fbTasks.$loaded().then(function(data) { 
+	//console.log("Step 1: "+ data.length);
+	//});
+	//console.log("Step 2: " + fbTasks.length);
  
 	if(taskId) { 
 		$scope.selectedTask = getTask(taskId); 
