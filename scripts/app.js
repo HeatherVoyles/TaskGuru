@@ -6,13 +6,15 @@ var app = angular
     'ngResource',    
     'ngRoute',    
     'firebase',
-    'toaster'
+    'toaster', 
+    'angularMoment'
   ])
   .constant('FURL', 'https://task-guru.firebaseio.com/')  
   .config(function ($routeProvider) {
     $routeProvider      
       .when('/', {
-        templateUrl: 'views/browse.html'        
+        templateUrl: 'views/browse.html',   
+        controller: 'BrowseController'   
       })
       .when('/login', { 
           templateUrl: 'views/login.html',
@@ -30,9 +32,9 @@ var app = angular
           //templateUrl: 'views/edit.html',
           //controller: 'TaskController'
         //})
-      .when('/browse', { 
+      .when('/browse/:taskId', { 
           templateUrl: 'views/browse.html',
-          controller: 'TaskController'
+          controller: 'BrowseController'
         })
       .otherwise({
         redirectTo: '/'
