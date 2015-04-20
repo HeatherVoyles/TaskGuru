@@ -52,7 +52,7 @@ app.factory('Auth', function(FURL, $firebaseAuth, $firebase) {
 auth.$onAuth(function(authData) { 
 if(authData) { 
 	angular.copy(authData, Auth.user); 
-	Auth.user.profile = $firebase(ref.child('profile').child(authData.vid)).$asObject();
+	Auth.user.profile = $firebase(ref.child('profile').child(authData.uid)).$asObject();
 } else { 
 	if(Auth.user && Auth.user.profile) { 
 		Auth.user.profile.$destroy(); 
