@@ -13,7 +13,7 @@
 				</div>
 				
 				<!--TASK LIST -->
-				<a ng-repeat="task in tasks | filter: searchTask | orderBy: 'datetime':true" ng-href="#/browse/{{task.$id}}">
+				<a ng-repeat="task in tasks | filter: {title: searchTask, status: '!cancelled'} | orderBy: 'datetime':true" ng-href="#/browse/{{task.$id}}">
 					<div class="list-group-item">
 						<div class="row-picture">
 							<img class="circle" ng-src="{{task.gravatar}}">
@@ -89,11 +89,61 @@
 						</div>
 					</div>
 				</div>
+				
+				<!-- COMMENTS -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+
+							<div class="panel-heading">
+								<h3 class="panel-title">Comments</h3>
+							</div>
+
+							<div class="panel-body">
+								<div class="title" ng-hide="comments && comments.length > 0">
+									<span>NO COMMENT ABOUT THIS TASK</span>
+								</div><br>
+
+								<div class="row">
+									<div class="col-md-1">
+										<img ng-src="" clas="img-circle comment gravatar">
+									</div>
+									<div class="col-md-11">
+										<div class="well well-sm cmt">
+											<span class="cmt-title">Leo Trieu:</span>
+											<span class="cmt-time pull-right"><span am-time-ago="1421840540061"></span></span><br>
+
+											<span>I can do this task</span>
+										</div>
+									</div>
+								</div><br>
+
+								<div class="row">
+									<div class="col-md-12">
+										<form ng-submit="addComment()">
+
+											<div class="input-group">
+												<div class="input-group-addon">
+													<img ng-src="" class="img-circle comment gravatar">
+													<div>
+														<input type="text" ng-model="content" cols="10" rows="3" class="form-control" placeholder="Comment here..." required><br>
+														</div>
+
+														<span class="pull-right">
+															<input type="submit" class="btn btn-info" values="Comment">
+														</span>
+													</form>
+ 							</div>
+
+						</div>
+					</div>
+				</div>
 
 			</div>
 		</div>
-
+		
 	</div>
 </div>
+ 
 
 <div ng-include="'views/partials/edit.html'"></div>
